@@ -1,0 +1,181 @@
+" All configuration of plugins, including keymapping goes here. For standard
+" vim operation keymap, see Keymaps
+
+"Plugin
+" Airline {{{
+let g:airline_powerline_fonts=1
+let g:airline_theme='papercolor'
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#ctrlp#show_adjacent_modes=1
+let g:airline#extensions#wordcount#enabled=1
+let g:airline#extensions#syntastic#enabled=1
+let g:airline#extensions#tagbar#enabled=1
+let g:airline#extensions#branch#format=1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+  nmap <leader>1 <Plug>AirlineSelectTab1
+  nmap <leader>2 <Plug>AirlineSelectTab2
+  nmap <leader>3 <Plug>AirlineSelectTab3
+  nmap <leader>4 <Plug>AirlineSelectTab4
+  nmap <leader>5 <Plug>AirlineSelectTab5
+  nmap <leader>6 <Plug>AirlineSelectTab6
+  nmap <leader>7 <Plug>AirlineSelectTab7
+  nmap <leader>8 <Plug>AirlineSelectTab8
+  nmap <leader>9 <Plug>AirlineSelectTab9
+  nmap <leader>- <Plug>AirlineSelectPrevTab
+  nmap <leader>+ <Plug>AirlineSelectNextTab
+
+" }}}
+
+" number {{{
+let g:numbers_exclude = ['tagbar', 'gundo', 'minibufexpl', 'nerdtree']
+set number
+" }}}
+
+" nerd-commenter {{{
+let g:NERDSpaceDelims = 1
+let g:NERDCommentEmptyLines = 1
+let g:NERDTrimTrailingWhitespace = 1
+" }}}
+
+" indent guides {{{
+let g:indent_guides_start_level=2
+set ts=2 sw=2 et
+" }}}
+
+" Syntastic {{{
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exec = 'eslint_d'
+let g:syntastic_HTML_checkers = ['eslint']
+let g:syntastic_HTML_eslint_exec = 'eslint_d'
+let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
+" }}}
+
+" YouCompleteMe - Supertab {{{
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" }}}
+
+" ultisnips {{{
+" let g:UltiSnipsExpandTrigger="<c-;>"
+let g:UltiSnipsExpandTrigger="<C-Enter>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:ultiSnipsJumpBackwardTrigger="<c-l>"
+let g:UltiSnipsEditSplit="vertical"
+
+" }}}
+
+" NerdTree {{{
+" let g:NERDTreeDirArrowExpandable = '▸'
+" let g:NERDTreeDirArrowCollapsible = '▾'
+map <C-e> :NERDTreeToggle<CR>
+" autocmd vimenter * NERDTree
+" }}}
+
+" Devicons {{{
+" NERDTress File highlighting
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+
+call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#002b36')
+call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#002b36')
+call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#002b36')
+call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#002b36')
+call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#002b36')
+call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#002b36')
+call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#002b36')
+call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#002b36')
+call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#002b36')
+call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#002b36')
+call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#002b36')
+call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#002b36')
+call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#002b36')
+call NERDTreeHighlightFile('ds_store', 'Gray', 'none', '#686868', '#002b36')
+call NERDTreeHighlightFile('gitconfig', 'Gray', 'none', '#686868', '#002b36')
+call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', '#002b36')
+call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#002b36')
+call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#002b36')
+
+if exists("g:loaded_webdevicons")
+  call webdevicons#refresh()
+endif
+"}}}
+
+" Tagbar {{{
+nmap <F7> :TagbarToggle<CR> " Invoke tagbar
+
+" }}}
+
+" Fugitive {{{
+if isdirectory(expand("G:/Work App/Vim/vimfiles/bundle/vim-Fugitive/"))
+	nnoremap <silent> <leader>gs :Gstatus<CR>
+	nnoremap <silent> <leader>gd :Gdiff<CR>
+	nnoremap <silent> <leader>gc :Gcommit<CR>
+	nnoremap <silent> <leader>gb :Gblame<CR>
+	nnoremap <silent> <leader>gl :Glog<CR>
+	nnoremap <silent> <leader>gp :Git push<CR>
+	nnoremap <silent> <leader>gr :Gread<CR>
+	nnoremap <silent> <leader>gw :Gwrite<CR>
+	nnoremap <silent> <leader>ge :Gedit<CR>
+endif
+" }}}
+
+" CtrlP"{{{
+if isdirectory(expand("G:/Work App/Vim/vimfiles/bundle/ctrlp.vim/"))
+	let g:ctrlp_working_path_mode = 'ra'
+	" nnoremap <silent> <D-t> :CtrlP<CR>
+endif
+"}}}
+
+" Omnisharp {{{
+" let g:OmniSharp_selector_ui = 'ctrlp'
+
+" }}}
+
+" Languages {{{
+"handlebars
+let g:mustache_abbreviations = 1
+au BufReadPost *.hbs set filetype=html.mustache syntax=html.mustache
+
+"javascripts
+let g:javascript_conceal_function       = "ƒ"
+let g:javascript_conceal_null           = "ø"
+let g:javascript_conceal_this           = "@"
+let g:javascript_conceal_return         = "⇚"
+let g:javascript_conceal_undefined      = "¿"
+let g:javascript_conceal_NaN            = "ℕ"
+let g:javascript_conceal_prototype      = "¶"
+let g:javascript_conceal_static         = "•"
+let g:javascript_conceal_super          = "Ω"
+let g:javascript_conceal_arrow_function = "⇒"
+
+" }}}
+
+" vim-json {{{
+" let g:vim_json_syntax_conceal = 0
+" }}}
+
+" vim-jsbeautifier {{{
+autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+" for json
+autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
+" for jsx
+autocmd FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
+" for html
+autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+" for css or scss
+autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+
+" }}}
