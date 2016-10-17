@@ -1,10 +1,11 @@
+" -------------------------------------------------------------------------
 " All configuration of plugins, including keymapping goes here. For standard
 " vim operation keymap, see Keymaps
+" -------------------------------------------------------------------------
 
-"Plugin
 " Airline {{{
 let g:airline_powerline_fonts=1
-let g:airline_theme='papercolor'
+" let g:airline_theme='papercolor'
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#ctrlp#show_adjacent_modes=1
 let g:airline#extensions#wordcount#enabled=1
@@ -71,7 +72,9 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:UltiSnipsExpandTrigger="<C-Enter>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:ultiSnipsJumpBackwardTrigger="<c-l>"
-let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsRemoveSelectModeMappings = 0
+let g:UltiSnipsUsePythonVersion = 2
+" let g:UltiSnipsEditSplit="vertical"
 
 " }}}
 
@@ -178,4 +181,8 @@ autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 " for css or scss
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
+" }}}
+
+" Vim-Pencil {{{
+let g:pencil#WrapModeDefault='soft'
 " }}}

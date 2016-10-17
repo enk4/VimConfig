@@ -1,10 +1,18 @@
-" Enk4's .vimrc, main purpose for programming with C# and JavaScript, but
-" enhanced to do any popular programming language for experimental purpose.
-" This vimrc is currently designed to work on windows environment, but will be
-" TO DO:improved in order to be working in all OS.
+" --------------------------------------------------------------------------
+" Enk4~'s vimrc.
+" Used mainly for javascript, html, and CSS editing; Note-taking and writing
+" blog using markdown (for hexo blog).
 "
-" Copyright: Muhammad 'Enka'
-" Last updated:  22/07/2016 10:21:56
+" This vimrc is currently designed to work on windows environment, but will be
+" developed to suite other OS as well (especially linux, since I don't have
+" MacOS as working environmnet).
+" Update 1:
+" - Separate the .vimrc to .vimrc.plugin, .vimrc.bundle, and .vimrc.keymap.
+" - add comments to clear the purpose of each script within the .vimrc files.
+"
+" Copyright: Muhammad 'Enka~'
+" Last updated: 8/15/2016 1:33:18 AM
+" --------------------------------------------------------------------------
 
 " ====== Main Configuration ======
 " These are config for vim to run
@@ -22,6 +30,8 @@ behave mswin
 " --------------------------------
 :set dir=~\vim_swap
 :set backupdir=~\vim_backup
+:set viewdir=~\vim_view
+:set undodir=~\vim_undo
 
 filetype off
 set laststatus=2
@@ -32,9 +42,12 @@ filetype indent on
 " Fonts etc.
 " --------------------------------
 if has('gui_running')
-  set guioptions-=T
-  set lines=60
-  set guifont=AnonymicePowerline_NF:h11:b
+  set guioptions-=T     " no toolbar and tear off configuration
+  set lines=40          " set total lines of the vim to [x].
+  " set guifont=AnonymicePowerline_NF:h11
+  set guifont=FuraMonoForPowerline_NF:h10
+  " set guifont=Monoid_NF:h8
+  " set guifont=MesloLGMDZ_NF:h10
 endif
 
 " --------------------------------
@@ -66,18 +79,40 @@ autocmd BufWinEnter *.* silent loadview
 
 autocmd BufEnter * silent! lcd %:p:h
 
+" -------------------------------
+" Set fold configuration
+" -------------------------------
 set foldenable
 set foldmethod=marker
 set foldmarker={{{,}}}
-set linespace=0
+
+" -------------------------------
+" set trailing whitespace.
+" -------------------------------
+
+set list
+set listchars=tab:>\ ,trail:•,extends:#,nbsp:.
+set expandtab       " change tab into spaces.
+
+" -------------------------------
+" Search related configuration
+" -------------------------------
+
 set incsearch
 set hlsearch
 set showmatch
 set ignorecase
 set smartcase
-set expandtab
-set list
-set listchars=tab:>\ ,trail:•,extends:#,nbsp:.
+
+" -------------------------------
+" other configurations
+" -------------------------------
+
+set linespace=0    " set the linespace between fonts to [x]
+
+" ------------------------------
+" Splitting setting
+" ------------------------------
 set splitbelow
 set splitright
 
@@ -99,7 +134,7 @@ endif
 syntax on
 set termencoding=256
 set background=dark
-colorscheme solarized
+colorscheme gruvbox
 
 " =========== Keymaps ============
 " All keymaps are kept at separate
@@ -120,3 +155,8 @@ endif
 if filereadable(expand("~/.vimrc.plugin"))
   source ~/.vimrc.plugin
 endif
+
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,text call pencil#init({'wrap': 'soft'})
+augroup end

@@ -1,53 +1,67 @@
+" -------------------------------------------------------------------------
 " All keymapping of vim shall be defined here.
 " These keymap are the vim native commands keymap, keymap for plugins shall be
 " available at .vimrc.plugin
+" -------------------------------------------------------------------------
 
-" Keymaps
+" ------ Map Leader key ------
 let mapleader = ","
 
-" navigate between split made easy
+" -- navigate between split --
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" my $ is too far
+" ------ my $ is too far -----
 nnoremap q $
 nnoremap $ q
 nnoremap dq d$
 vnoremap q $
 vnoremap $ q
 
-" word wrapping navigation
+" - word wrapping navigation -
 nnoremap k gk
 nnoremap j gj
 
-" map current date timestamp
+" -map current date timestamp-
 inoremap <F5> <C-R>=strftime("%c")<CR>
 nnoremap <F5> :pu=strftime('%c')<CR>
 
-" switch background between light and dark
+" ----------------------------
+" switch background between
+" light and dark
+" ----------------------------
 map <leader>bg :let &background = (&background == "dark"? "light":"dark")<CR>
 
-" Shortcuts Change working directory to that of the current file
+" ----------------------------
+" Shortcuts Change working
+" directory to that of the
+" current file
+" ----------------------------
 cmap cwd lcd %:p:h
 cmap cd. lcd %:p:h
 
+" ----------------------------
 " Shortcuts helpers to edit mode
+" ----------------------------
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 map <leader>ew :e %%
 map <leader>es :sp %%
 map <leader>ev :vsp %%
 map <leader>et :table %%
 
-"Shortcut to vimshell
+" -- Shortcut to vimshell ---
 map <leader>sh :VimShell<CR>
 
-" navigating between buffer
+" -navigating between buffer-
 map <leader>nf :bn<CR>
 
-"beautify json
+" ------ beautify json ------
 nmap =j :%!python -m json.tool<CR>
 
-" map tab new
+" ------ map tab new --------
 map <C-t> :tabnew<CR>
+
+" ------ vimroom ------------
+map <leader>mz <Plug>VimroomToggle
