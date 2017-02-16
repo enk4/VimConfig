@@ -1,4 +1,4 @@
-# Cerni's VimConfig
+# Enk4's VimConfig
 ##  A vim configuration as learning material for dummy and beginner.
 This Vim Configuration created to utilise mainly for lite coding and writing. It is optimised to work on Markdown, JS, C#, XML, HTML and CSS. I make this as clean as possible and you definitely need to access the specific files to do specific things. I do give comment to almost all configuration listed here, so you can see them as 'cheat sheet', especially for people who are new to vim and want to make configuration.
 
