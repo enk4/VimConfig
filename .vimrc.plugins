@@ -1,0 +1,78 @@
+" ==================================
+" All Plugins goes here.
+" ==================================
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin('~/.vim/bundle')
+
+" -------------------------------
+" -------- Core plugins ---------
+" -------------------------------
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'sirver/ultisnips'
+Plugin 'sjl/Gundo.vim'
+Plugin 'shougo/vimproc.vim'
+Plugin 'shougo/vimshell.vim'
+Plugin 'tpope/vim-dispatch'
+Plugin 'majutsushi/tagbar'
+
+" -------------------------------
+" -- GUI enhancements & themes --
+" -------------------------------
+Plugin 'bling/vim-airline'
+Plugin 'morhetz/gruvbox'
+Plugin 'myusuf3/numbers.vim'
+
+" -------------------------------
+" ----- Coding enhancement ------
+" -------------------------------
+Plugin 'scrooloose/syntastic'
+Plugin 'honza/vim-snippets'
+Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'lilydjwg/colorizer'
+Plugin 'Townk/vim-autoclose'
+Plugin 'vim-scripts/closetag.vim'
+
+" -------------------------------
+" -------- Time Tracker ---------
+" -------------------------------
+Plugin 'wakatime/vim-wakatime'
+
+" -------------------------------
+" - Nav, exploration, git & svn -
+" -------------------------------
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdtree'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+
+" -------------------------------
+" ------- Writing Tools ---------
+" -------------------------------
+Plugin 'reedes/vim-pencil'
+" Plugin 'maksimr/vim-translator'
+Plugin 'szw/vim-dict'
+
+" -------------------------------
+" ------- Language Packs --------
+" -------------------------------
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'pangloss/vim-javascript'
+Plugin 'othree/html5.vim'
+Plugin 'sheerun/vim-json'
+Plugin 'JulesWang/css.vim'
+Plugin 'gabrielelana/vim-markdown'
+Plugin 'OmniSharp/Omnisharp-vim'
+Plugin 'orangeT/vim-csharp'
+
+" -------------------------------
+" --------- fancy things --------
+" -------------------------------
+Plugin 'mhinz/vim-startify'
+Plugin 'ryanoasis/vim-devicons'
+
+call vundle#end()
+
